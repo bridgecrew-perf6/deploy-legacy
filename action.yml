@@ -1,0 +1,37 @@
+name: 'Atom deploy legacy'
+description: 'deploy legacy application'
+inputs:
+  application:
+    description: 'application'
+    required: true
+  version:
+    description: 'version'
+    required: true
+  environment:
+    description: 'environment'
+    required: true
+  skip_openAM:
+    description: 'skip openAM'
+    default: true
+  skip_suspend:
+    description: 'skip suspend'
+    default: true
+  skip_selftest:
+    description: 'skip selftest'
+    default: true
+
+runs:
+  using: "composite"
+  steps:
+    - run: |
+          curl -X POST \
+          -H "Authorization: token ${{ secrets.PAT }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/navikt/legacy-deploy-poc/actions/workflows/20175715/dispatches \
+          -d '{ \
+            "ref":"main", \
+            "inputs": { \
+              "application":"${{ github.event.inputs.application }}", \
+              "version":"${{ github.event.inputs.version }}", \
+              "environment":"${{ github.event.inputs.environment }}" \
+           }}'
