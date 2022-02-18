@@ -37,7 +37,7 @@ runs:
           -d '{ \
             "ref":"main", \
             "inputs": { \
-              "application":"${{ github.event.inputs.application }}", \
-              "version":"${{ github.event.inputs.version }}", \
-              "environment":"${{ github.event.inputs.environment }}" \
+              "application":"${{ inputs.application }}", \
+              "version":"${{ inputs.version }}", \
+              "environment":"${{ inputs.environment }}" \
            }}'
