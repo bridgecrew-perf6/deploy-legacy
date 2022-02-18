@@ -23,7 +23,9 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - run: |
+    - name: Curl github-repo
+      shell: bash
+      run: |
           curl -X POST \
           -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
           -H "Accept: application/vnd.github.v3+json" \
