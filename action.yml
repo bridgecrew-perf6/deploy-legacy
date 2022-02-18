@@ -34,10 +34,4 @@ runs:
           -u "${{ github.actor }}:${{ github.token }}" \
           -H "Accept: application/vnd.github.v3+json" \
           https://api.github.com/repos/navikt/legacy-deploy-poc/actions/workflows/20175715/dispatches \
-          -d '{ \
-            "ref":"main", \
-            "inputs": { \
-              "application":"${{ inputs.application }}", \
-              "version":"${{ inputs.version }}", \
-              "environment":"${{ inputs.environment }}" \
-           }}'
+          -d '{ "ref":"main", "inputs": { "application":"${{ inputs.application }}", "version":"${{ inputs.version }}", "environment":"${{ inputs.environment }}" }}'
